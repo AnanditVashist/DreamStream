@@ -1,0 +1,14 @@
+﻿@model DreamStream.ViewModel.MovieViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+@foreach (var movie in Model.Movie)
+{
+<ul>
+    <li>@movie.Name</li>
+</ul>
+}
+
