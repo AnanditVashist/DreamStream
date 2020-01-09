@@ -9,11 +9,20 @@ namespace DreamStream.Models
     public class Customer
     {
         public int Id { get; set; }
+
         [Required]
-        [StringLength(225)]
+        [StringLength(255)]
         public string Name { get; set; }
+        
         public bool IsSubscribedToNewsletter { get; set; }
+        
         public MembershipType MembershipType { get; set; }
-        public int MembershiptypeId { get; set; }
+
+        [Display(Name="Membership Type")]
+        public int MembershipTypeId { get; set; }
+        
+        
+        [Display(Name="Date of Birth")]
+        public Nullable<DateTime> Birthdate { get; set; }
     }
 }
