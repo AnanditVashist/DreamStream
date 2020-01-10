@@ -9,8 +9,8 @@
 <ul>
     <li>@Model.MembershipType.Name</li>
 
-@if (!(Model.BirthDate == null))
+@if (!(Model.Birthdate == null))
 {    
-    <li>@Model.BirthDate.ToShortDateString()</li>
+    <li>@Model.Birthdate.Value.ToShortDateString()</li>
 }
 </ul>
