@@ -1,14 +1,14 @@
-﻿@model DreamStream.ViewModel.CustomerViewModel
+﻿@model IEnumerable<DreamStream.Models.Customer>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Movies</h2>
-@foreach (var customer in Model.Customer)
+<h2>Customers</h2>
+@foreach (var customer in Model)
 {
     <ul>
-        <li>@customer.Name</li>
+        <li>@Html.ActionLink(customer.Name,"Details",new { id=customer.Id})-@customer.MembershipType.Name</li>
     </ul>
 }
 

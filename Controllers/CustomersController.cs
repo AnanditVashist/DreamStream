@@ -1,4 +1,5 @@
-﻿using DreamStream.Models;
+﻿using System.Data.Entity;
+using DreamStream.Models;
 using DreamStream.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -6,23 +7,32 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace DreamStream.Controllers
 {
     public class CustomersController : Controller
     {
         // GET: Customers
-        public ActionResult Index()
+        
+        
+        private ApplicationDbContext _context;
+        public CustomersController()
         {
-            var customer = new List<Customer>()
-            {
-                new Customer { Name = "John Smith", Id = 1 },
-                new Customer { Name = "Nancy Smith", Id = 2 }
-            };
-            var viewModel = new CustomerViewModel
-            {
-                Customer = customer
-            };
-            return View(viewModel);
+            _context = new ApplicationDbContext();
+        }
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();        
+        }
+        public ActionResult Index() 
+        {
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
+            return View(customers);
+        }
+        public ActionResult Details(int id)
+        {
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
+            return View(customer);
         }
     }
 }
