@@ -5,9 +5,10 @@
 }
 
 <h2>Movies</h2>
+@Html.ActionLink("Add Movie","New","",new { @class="btn btn-primary"})
 @foreach (var movie in Model)
 {
 <ul>
-    <li>@Html.ActionLink(movie.Name,"Details",new { id = movie.Id })-@movie.Genre.Type</li>
+    <li>@Html.ActionLink(movie.Name,"Edit",new { id = movie.Id })-@movie.Genre.Type</li>
 </ul>
 }

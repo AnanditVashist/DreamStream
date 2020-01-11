@@ -13,8 +13,10 @@ namespace DreamStream.Models
         [StringLength(255)]
         public string Name { get; set; }
         public  bool IsSubscribedToNewsletter { get; set; }
+        [Display(Name="Membership Type")]
         public MembershipType MembershipType { get; set; }
         public int MembershipTypeId { get; set; }
+        [Display(Name="Date of Birth")]
         public Nullable<DateTime> Birthdate { get; set; }
     }
 }
